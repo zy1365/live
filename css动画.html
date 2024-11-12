@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(78, 78, 78);
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            position: relative;
+            width: 800px;
+            height: 400px;
+        }
+
+        .yun1 {
+            position: absolute;
+            width: 20vw;
+            height: 7vw;
+            background-color: white;
+            left: 13vw;
+            top: 5vw;
+            border-radius: 10vw;
+            /* transform: translate(-50%, -50%); */
+            /* z-index: 5; */
+        }
+
+        .yun2 {
+            position: absolute;
+            width: 5vw;
+            height: 5vw;
+            background-color: rgb(255, 255, 255);
+            left: 17vw;
+            top: 3vw;
+            border-radius: 50%;
+            box-shadow: 4.4vw 0.5vw 0px 2vw rgb(255, 255, 255);
+            /* z-index: 6; */
+        }
+
+        .drop {
+            position: absolute;
+            top: 20px;
+            width: 0.2vw;
+            height: 1vw;
+            background-color: rgb(5, 171, 254);
+            animation: rain 2s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(0px) scaleY(1.2);
+            }
+
+            10% {
+                transform: translateY(15px) scaleY(1);
+            }
+
+            20% {
+                transform: translateY(35px) scaleY(0.9);
+            }
+
+            30% {
+                transform: translateY(60px) scaleY(0.8);
+            }
+
+            40% {
+                transform: translateY(90px) scaleY(0.7);
+            }
+
+            50% {
+                transform: translateY(125px) scaleY(0.7);
+            }
+
+            60% {
+                transform: translateY(165px) scaleY(0.4);
+            }
+
+            70% {
+                transform: translateY(210px) scaleY(0.3);
+            }
+
+            80% {
+                transform: translateY(260px) scaleY(0.2);
+            }
+
+            90% {
+                transform: translateY(315px) scaleY(0.1);
+            }
+
+            100% {
+                transform: translateY(315px) scaleY(0.1) scaleX(15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <audio id="myAudio" src="./rain.mp3" preload="auto">???</audio>
+        <div class="yun1">
+        </div>
+        <div class="yun2">
+        </div>
+    </div>
+
+    <script>
+        function rain() {
+            let yun = document.querySelector('.yun1');
+            let drop = document.createElement('div');
+            drop.classList.add('drop');
+            yun.appendChild(drop);
+            drop.style.left = Math.random() * 18 + 0.9 + 'vw';
+            drop.style.top = Math.random() * 5 + 2 + 'vw';
+            let width = Math.random() * 0.3;
+            drop.style.width = width + 'vw';
+            drop.style.height = 4 * width + 'vw';
+            drop.style.animationDuration = Math.random() * 2 + 1 + 's';
+            setTimeout(() => {
+                drop.remove();
+            }, 3000)
+        }
+        setInterval(rain, 20)
+        window.onload = function () {
+            var audio = document.getElementById('myAudio');
+            audio.play().catch(function (error) {
+                console.log('无法自动播放音频:', error);
+            });
+        };
+        window.onmousedown = function () {
+            var audio = document.getElementById('myAudio');
+            audio.play().catch(function (error) {
+                console.log('无法自动播放音频:', error);
+            });
+            alert(
+                'hi,angel\nI hope you are doing well\nमलाई आशा छ कि तपाईं राम्रो गर्दै हुनुहुन्छ'
+            )
+        }
+    </script>
+</body>
+
+</html>
